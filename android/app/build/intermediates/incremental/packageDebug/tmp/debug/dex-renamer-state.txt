@@ -1,0 +1,4 @@
+#Sun Sep 20 12:05:26 BRT 2020
+base.0=C\:\\Users\\moyad\\Documents\\GitHub\\lambe1\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
+path.0=classes.dex
+renamed.0=classes.dex
