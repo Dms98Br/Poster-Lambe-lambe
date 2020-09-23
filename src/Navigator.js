@@ -16,14 +16,14 @@ const authRouter = createStackNavigator({
     Login :{ screen: Login, navigationOptions: { title: 'Login' } },
     Register: { screen: Register, navigationOptions: { title: 'Register' } }
 },{
-    InitialRouteName: 'Login'
+    initialRouteName: 'Login'
 })
 
 const loginOrProfileRouter= createSwitchNavigator({
     Profile: Profile,
-    Auth: authRouter
-},{
-    InitialRouteName: 'Profile'
+    Auth: authRouter,
+}, {
+    initialRouteName: 'Auth'
 })
 
 const MenuRoutes={
@@ -56,7 +56,7 @@ const MenuRoutes={
     }
 }
 const MenuConfig = {
-    InitialRouteName: 'Feed',
+    initialRouteName: 'Feed',
     tabBarOptions:{
         showlabel: false
     }
