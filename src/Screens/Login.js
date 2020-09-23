@@ -1,4 +1,6 @@
 import React,{ Component } from 'react'
+import { connect } from 'react-redux'
+import { login } from '../store/actions/user-actions'
 import {
     View,
     Text,
@@ -9,10 +11,12 @@ import {
 
 class Login extends Component{
     state={
+        name: 'Temp',
         email:'',
         password:''
     }
     login = () => {
+        this.props.onLogin ({ ...this.state })
         this.props.navigation.navigate('Profile')
     }
     render(){
@@ -22,8 +26,11 @@ class Login extends Component{
                     autoFocus={true} keyboardType='email-address'
                     value={this.state.email}
                     onChangeText={email => this.setState({ email })} />
-                <TextInput placeholder= 'Senha' style={styles.input}
-                    secureTextEntry={true} value={this.state.password} />
+                
+                <TextInput placeholder='Senha' style={styles.input}
+                    secureTextEntry={true} value={this.state.password}
+                    onChangeText={password => this.setState({ password })} />
+                
                 <TO onPress={this.login} style={styles.buttom}>
                     <Text style={styles.buttomText}>Login</Text>
                 </TO>
@@ -62,4 +69,11 @@ const styles = StyleSheet.create({
         borderColor: '#333',
     }
 })
-export default Login
+
+const mapDispatchToProps = dispatch =>{
+    return{
+        onLogin: user => dispatch(login(user))
+    }
+}
+
+export default connect (null, mapDispatchToProps)(Login)
