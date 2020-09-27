@@ -19,14 +19,16 @@ class AddComments extends Component{
     }
 
     handleAddComment=()=>{        
+        // console.log('this.props.postId ', this.props.postId)
+        // console.log('this.props.name ', this.props.name)
+        // console.log('this.state.comment ', this.state.comment)
         this.props.onAddComment({
             postId: this.props.postId,
             comment: {
                 nickname: this.props.name,
                 comment: this.state.comment
             }
-        })
-        
+        })        
         this.setState({ comment: '', editMode: false })
     }
 
