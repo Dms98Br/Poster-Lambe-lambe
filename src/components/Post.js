@@ -10,7 +10,7 @@ import Comments from './Comments'
 import AddComment from './AddComment'
 class Post extends Component{
     render(){  
-        //console.log('Comments '+this.props.comments);      
+        
         return(            
             <View style={styles.container}>
                 <Image source={this.props.image} style= {styles.image} />
