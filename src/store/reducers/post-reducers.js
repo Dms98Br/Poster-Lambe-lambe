@@ -1,3 +1,4 @@
+import { Alert } from 'react-native';
 import { ADD_POST, ADD_COMMENT } from '../actions/actionTypes-actions'
 
 const initialState = {
@@ -16,30 +17,30 @@ const initialState = {
     }]
 }
 
-const reducer = ( state = initialState, actions ) =>{
+const reducer = ( state = initialState, actions ) =>{    
     switch (actions.type) {
-        case ADD_POST:
-             
+        case ADD_POST:             
             return{
                 ...state,                
                 posts: state.posts.concat({
                     ...actions.payload
                 })
             }
-        case ADD_COMMENT:
-            
+        case ADD_COMMENT:            
+            //console.log('state.posts fora posts: ', state.posts);
             return{
                 ...state,
-                posts: state.posts.map( post => {                    
-                    if(post.id === actions.payload.postId){
+                posts: state.posts.map( post => {
+                    if(post.id === actions.payload.postId){                        
                         if( post.comments ){
                             post.comments = post.comments.concat(
                                 actions.payload.comment
                             )
                         } else{
                             post.comments = [ actions.payload.comment ]
-                        }                    
-                        console.log('Post '+post);    
+                        }
+                        // console.log('post ', post);
+                        // console.log('state.posts antes do return ', state.posts);
                         return post
                     }
                 })
