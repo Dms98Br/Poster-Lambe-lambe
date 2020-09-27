@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { StyleSheet, FlatList, View } from 'react-native'
+import { StyleSheet, FlatList, View, LogBox } from 'react-native'
 import Header from '../components/Header'
 import Post from '../components/Post'
 
 class Feed extends Component{
-    render(){
-        console.log(this.props.posts)
+    render(){        
+        console.log('Feed', this.props.posts)
         return(        
             <View style={ styles.container}>
                 <Header/>                
@@ -34,6 +34,7 @@ const styles = StyleSheet.create({
 })
 
 const mapStateToProps = ({ posts }) => {
+    console.log('postsFeed', posts.posts);
     return{
         posts: posts.posts
     }
