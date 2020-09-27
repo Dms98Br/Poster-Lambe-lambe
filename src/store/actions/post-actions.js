@@ -8,6 +8,7 @@ export const addPost = post => {
 }
 
 export const addComment = payload =>{    
+    console.log('payload ', payload);
     return{
         type: ADD_COMMENT,
         payload: payload
