@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { addComment } from '../store/actions/post-actions'
 import {
     View,
     Text,
@@ -16,9 +18,18 @@ class AddComments extends Component{
         editmode: false
     }
 
-    handleAddComment=()=>{
-        Alert.alert('Adicionado', this.state.comment)
+    handleAddComment=()=>{        
+        this.props.onAddComment({
+            postId: this.props.postId,
+            comment: {
+                nickname: this.props.name,
+                comment: this.state.comment
+            }
+        })
+        
+        this.setState({ comment: '', editMode: false })
     }
+
     render(){
         let commentArea = null
         if (this.state.editmode){
@@ -66,4 +77,15 @@ const styles = StyleSheet.create({
         width: '90%'
     }
 })
-export default AddComments
+
+const mapStateToProps = ({ user }) =>{
+    return{
+        name: user.name
+    }
+}
+const mapDispatchToProps = dispatch =>{
+    return{
+        onAddComment: payload => dispatch(addComment(payload))
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(AddComments)
