@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "lambe-lambe-reactnative-back",
+  "private_key_id": "a9d64de6ea745930f617d8cbdd056c7f086191f8",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC8L4PVJCgvoegN\na2ADT7tLsmKzs1RsUricIio//9+SNkNSagTjowxBKumxuUsq/ZMa8Go4KFvNfY1F\nMOc3/RuBGTiE1qjKxD7DGNwfuVJhuDlJJnf5fTTQNHG4ZECPkMR26kxnv2InyxPq\nqJu8ZucyTdov1YCcaWB4vs+xghPoWp9l+4Rls+8Gbqm03yXndoCMW5xz9oNZAttK\nULnAm5jbkZ+6JU3nCHXtOdpIa0FBe8N+eF/ypJG058CaTCbxXfK3gCPA79t0caTX\nio79/O8J5zQZHdc6M5Pumh+TnnDqZA1lNPPztlFByTfQwoQ+6hbIv8KkUexDqOx8\nx3FM6pU9AgMBAAECggEAEGbTxq/wELa70u+Y3rEEUgSqNZ9brFVJYdJYfFuA0O2J\n0JUM+Aot90AWPjc4JfcT6zUpDNv3pGFc/rrUbDzTON1J38oVzBZuofJ4vQsZ8wpr\nc8S2kDgpcjwf7UJPnjOv6+1f22sC0xUQF1O6vyD45ZmDesfQ/dDxZ5S55W7A7W9S\nUTfavvRfibnexGQoT6CfqY/MrcC0mipzHN9/IMwmODdiIBK6d5F4dzCAa6MXAjIM\nGkOS9Bgnd29w5ctlq0y36kNv1NJm7tadOl8Bu4gxsZUuJdaa6aKNVLp/3J2AjpG8\nKkzhEqM46VoK+CPu7r12DvKFgW5q/kwhcPzAukXiwQKBgQDfIvKfL8I3Nb6I2eJ/\nZzZdo+nOXn8UyqFiCrBX0VYpO6O8pTQv4cHuUdbOEczG05SALqnis5+Zu1+LtCg9\nS0YLFKBIdZcGpE2bsbkEqC5NgJ9OCmH+v819+PJbzBWPSRfOx28giqIHdhlUAsCw\nIEXxcdgjXA7CfbqikVSad7Zb0wKBgQDX5sqwjucHfzxL9WNXc6jc5OIbo5EkNYEl\nvP/vMAVNAkcPNP5E/7iLhXjvs/OxaHpXjjUoSUcjvEUk43AgkHlI2N1AwCHOTb2r\nKkovgonqPa28sJUW2poe9JZZVOs/vph95csNhCLUWNIdyniMSouMwszj8gk9SB8P\n9wC+2qTwrwKBgBix0HInofHkQ8r3eiapcI3adyS8tonBhyzHjA6b/1Ie5JcbHXRz\nIrhSXFiABc63Wcb54xlQ0cf8wa0/afimnQDa7oY2ZVl505D4kUZfqogvRPIpGgFM\njtxzMbdRFc2+xCDBV54dWaNDwbfXeiXD3JnFBKudI5EIwx/8v4U83HS7AoGAUF5t\nXUQU5EmM3InALTG0zmW1daxxvxTbunycmSE7F+udICAN9wlqXSWWW0SVlpjZ0fXx\n+8krXjYbVxwDBVxCiceQtSXQb8eoryrS6tShGj1Ti0YAeb1uWc+amC5wVA5THaqI\n58MkY/+cV9KjBTZKtF9ffgr/PXy3c23zLRifBakCgYEAjGKVZpjFVWe89Iw5zfej\nfB/UZeSHwAINLy+IUdZRKwKC0rcJ/KhZyJsMkcgCoy3mDGch9i3VXgBtK9lagiDR\nmDqyXBA51ZL5sp0/iI8NB5ok1QfgOz2BcKxM0lgjknvgtslpQ91KZFSDtHRyA9v5\nADM3zDbVUGE5i5SJQq/tz1M=\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-rlwgq@lambe-lambe-reactnative-back.iam.gserviceaccount.com",
+  "client_id": "101558652822239726013",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-rlwgq%40lambe-lambe-reactnative-back.iam.gserviceaccount.com"
+}
