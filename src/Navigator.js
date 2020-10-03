@@ -6,11 +6,11 @@ import {
 } from 'react-navigation'
 import Icon from 'react-native-vector-icons/FontAwesome'
 
-import Feed from './Screens/Feed'
-import AddPhoto from './Screens/AddPhoto'
-import Profile from './Screens/Profile'
-import Login from './Screens/Login'
-import Register from './Screens/Register'
+import Feed from './screens/feed'
+import AddPhoto from './screens/addPhoto'
+import Profile from './screens/profile'
+import Login from './screens/login'
+import Register from './screens/register'
 
 const authRouter = createStackNavigator({
     Login :{ screen: Login, navigationOptions: { title: 'Login' } },

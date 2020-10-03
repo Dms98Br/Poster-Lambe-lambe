@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { StyleSheet, FlatList, View, LogBox } from 'react-native'
-import Header from '../components/Header'
-import Post from '../components/Post'
+import { StyleSheet, FlatList, View } from 'react-native'
+import Header from '../components/header'
+import Post from '../components/post'
+import { fetchPosts } from '../store/actions/post-actions'
 
 class Feed extends Component{
-    render(){        
-        console.log('Feed', this.props.posts)
+    componentDidMount = () =>{
+        this.props.onFetchPosts()
+    }
+    render(){
         return(        
             <View style={ styles.container}>
                 <Header/>                
@@ -39,4 +42,11 @@ const mapStateToProps = ({ posts }) => {
         posts: posts.posts
     }
 }
-export default connect(mapStateToProps)(Feed)
+
+const mapDistpatchToProps = dispatch =>{
+    return {
+        onFetchPosts: () => dispatch(fetchPosts())
+    }
+}
+
+export default connect(mapStateToProps, mapDistpatchToProps)(Feed)

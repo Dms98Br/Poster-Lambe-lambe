@@ -1,30 +1,16 @@
 import { Alert } from 'react-native';
-import { ADD_POST, ADD_COMMENT } from '../actions/actionTypes-actions'
+import { SET_POSTS, ADD_COMMENT } from '../actions/actionTypes-actions'
 
 const initialState = {
-    posts:[{
-        id: Math.random(),
-        nickname: 'Rafael',
-        email: 'rafs@email.com',
-        image: require('../../../assets/imgs/fence.jpg'),
-        comments:[{
-            nickname: 'Jonh',
-            comment: 'Stunning'
-        },{
-            nickname: 'AnJu',
-            comment:'Bela foto'
-        }]
-    }]
+    posts:[]
 }
 
-const reducer = ( state = initialState, actions ) =>{    
-    switch (actions.type) {
-        case ADD_POST:             
-            return{
-                ...state,                
-                posts: state.posts.concat({
-                    ...actions.payload
-                })
+const reducer = ( state = initialState, actions ) =>{        
+    switch (actions.type) {        
+        case SET_POSTS:
+            return {
+                ...state,
+                posts: actions.payload
             }
         case ADD_COMMENT:            
             //console.log('state.posts fora posts: ', state.posts);
