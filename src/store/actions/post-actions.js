@@ -1,7 +1,14 @@
-import { SET_POSTS, ADD_COMMENT } from './actionTypes-actions'
+import {
+    SET_POSTS,
+    CREATING_POST,
+    POST_CREATED
+} from './actionTypes-actions'
+
 import axios from 'axios'
+
 export const addPost = post => {
-    return dispatch => {                
+    return dispatch => { 
+        dispatch(creatingPost())              
         axios({
             url: 'uploadImage',
             baseURL: 'https://us-central1-lambe-lambe-reactnative-back.cloudfunctions.net/uploadImage',
@@ -14,25 +21,42 @@ export const addPost = post => {
             post.image = resp.data.imageUrl            
             axios.post('/posts.json', { ...post })
             .catch(err => console.log('err2', err))
-            .then(res => console.log('res.data ',res.data))
+            .then(res => {
+                dispatch(fetchPosts())
+                dispatch(postCreated())
+            })
         })
     }
 }
 
 export const addComment = payload =>{        
-    return{
-        type: ADD_COMMENT,
-        payload: payload
+    console.log('payload', payload);
+    return dispatch =>{
+        axios.get(`/posts/${payload.postId}.json`)
+        .catch( err => console.log(err))
+        .then(res => {
+            const comments = res.data.comments || []
+            comments.push(payload.comments)
+            axios.patch(`posts/${payload.postId}.json`, {comments})
+            .catch( err => console.log(err))
+            .then( res => {
+                dispatch(fetchPosts())
+            })
+        })
     }
+    // return{
+    //     type: ADD_COMMENT,
+    //     payload: payload
+    // }
 }
 
-export const setPosts = posts =>{
-    console.log('posts-actions',posts);
+export const setPosts = posts =>{    
     return{
         type: SET_POSTS,
         payload: posts
     }
 }
+
 export const fetchPosts = () =>{    
     return dispatch => {
         axios.get('/posts.json')
@@ -46,7 +70,19 @@ export const fetchPosts = () =>{
                     id: key
                 })
             }
-            dispatch(setPosts(posts))
+            dispatch(setPosts(posts.reverse()))
         })
+    }
+}
+
+export const creatingPost = () =>{
+    return{
+        type: CREATING_POST
+    }
+}
+
+export const postCreated = () =>{
+    return{
+        type: POST_CREATED
     }
 }
