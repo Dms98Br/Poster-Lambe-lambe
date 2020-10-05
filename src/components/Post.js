@@ -6,11 +6,12 @@ import {
     StyleSheet,
     View,
 } from 'react-native'
-import Autor from './author'
+import Autor from './auth'
 import Comments from './comments'
 import AddComment from './addComment'
 class Post extends Component{
     render(){  
+        
         const addComment = this.props.name ? 
             <AddComment postId={ this.props.id }/> : null
         return(            
