@@ -20,6 +20,15 @@ class AddPhoto extends Component{
         image: null,
         comment: ''
     }
+    componentDidUpdate = prevProps =>{
+        if ( prevProps.loading && !this.props.loading ) {
+            this.setState({
+                image: null,
+                comment: ''
+            })
+            this.props.navigation.navigate('Feed')        
+        }
+    }
     pickerImage = () =>{
         if (!this.props.name) {
             Alert.alert('Falha!', noUser)
@@ -51,8 +60,8 @@ class AddPhoto extends Component{
                 comment: this.state.comment
             }]
         })
-        this.setState({ image: null, comment: ''})
-        this.props.navigation.navigate('Feed')
+        // this.setState({ image: null, comment: ''})
+        // this.props.navigation.navigate('Feed')
     }
 
     render(){
@@ -70,7 +79,9 @@ class AddPhoto extends Component{
                     style={styles.input} value={this.state.comment} 
                     editable={this.props.name != null}
                     onChangeText={comment => this.setState({ comment })}/>
-                    <TO onPress={this.save} style={styles.buttom}>
+                    <TO onPress={this.save} 
+                        disabled={this.props.loading}
+                        style={[styles.buttom, this.props.loading ? styles.buttonDisabled : null ]}>
                         <Text style={styles.buttomText}>Salvar</Text>
                     </TO>
                 </View>
@@ -78,6 +89,22 @@ class AddPhoto extends Component{
         )
     }
 }
+const mapStateToProps = ({ user, posts }) => {
+    return{
+        email: user.email,
+        name: user.name,
+        loading: posts.isUploading
+    }
+}
+
+const mapDispatchToProps = dispatch =>{
+    return{
+        onAddPost: post => dispatch(addPost(post))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddPhoto)
+
 const styles = StyleSheet.create({
     container:{
         flex: 1,
@@ -111,20 +138,8 @@ const styles = StyleSheet.create({
     input:{
         marginTop: 20,
         width: '90%'
+    },
+    buttonDisabled:{
+        backgroundColor: '#AAA'
     }
 })
-
-const mapStateToProps = ({ user }) => {
-    return{
-        email: user.email,
-        name: user.name
-    }
-}
-
-const mapDispatchToProps = dispatch =>{
-    return{
-        onAddPost: post => dispatch(addPost(post))
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(AddPhoto)
