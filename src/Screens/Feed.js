@@ -16,17 +16,14 @@ class Feed extends Component{
                 <FlatList 
                     data={ this.props.posts }
                     keyExtractor={item => `${item.id}`} 
-                    renderItem={({ item })=>        
-                     <Post key={ item.id }{ ...item }/>
+                    renderItem={({ item })=>   
+                    <Post key={ item.id }{ ...item }/>
                     }                    
                 />
             </View>
-            
         )
     }
-
 }
-
 const styles = StyleSheet.create({
     container:{
         flex: 1,
@@ -37,7 +34,6 @@ const styles = StyleSheet.create({
 })
 
 const mapStateToProps = ({ posts }) => {
-    console.log('postsFeed', posts.posts);
     return{
         posts: posts.posts
     }
