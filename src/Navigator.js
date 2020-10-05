@@ -40,7 +40,7 @@ const MenuRoutes={
         name: 'AddPhoto',
         screen: AddPhoto,
         navigationOptions:{
-            title: 'Add Picture',
+            title: 'add Picture',
             tabBarIcon: ({ tintColor }) =>
             <Icon name='camera' size={30} color={tintColor}/> 
         }
