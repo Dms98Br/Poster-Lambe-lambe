@@ -1,8 +1,13 @@
 import { Alert } from 'react-native';
-import { SET_POSTS, ADD_COMMENT } from '../actions/actionTypes-actions'
+import {
+    SET_POSTS,
+    CREATING_POST,
+    POST_CREATED
+} from '../actions/actionTypes-actions'
 
 const initialState = {
-    posts:[]
+    posts:[],
+    isUploading: false
 }
 
 const reducer = ( state = initialState, actions ) =>{        
@@ -12,25 +17,18 @@ const reducer = ( state = initialState, actions ) =>{
                 ...state,
                 posts: actions.payload
             }
-        case ADD_COMMENT:            
-            //console.log('state.posts fora posts: ', state.posts);
+        case CREATING_POST:
             return{
                 ...state,
-                posts: state.posts.map( post => {
-                    if(post.id === actions.payload.postId){                        
-                        if( post.comments ){
-                            post.comments = post.comments.concat(
-                                actions.payload.comment
-                            )
-                        } else{
-                            post.comments = [ actions.payload.comment ]
-                        }
-                        // console.log('post ', post);
-                        // console.log('state.posts antes do return ', state.posts);
-                        return post
-                    }
-                })
+                isUploading: true
             }
+        
+        case POST_CREATED:
+            return{
+                ...state,
+                isUploading: false
+            }
+
         default:
             return state
     }
