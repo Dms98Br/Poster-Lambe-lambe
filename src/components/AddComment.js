@@ -18,42 +18,42 @@ class AddComments extends Component{
         editmode: false
     }
 
-    handleAddComment=()=>{        
-        // console.log('this.props.postId ', this.props.postId)
-        // console.log('this.props.name ', this.props.name)
-        // console.log('this.state.comment ', this.state.comment)
+    handleAddComment=()=>{
         this.props.onAddComment({
             postId: this.props.postId,
-            comment: {
+            comments: {
                 nickname: this.props.name,
                 comment: this.state.comment
             }
-        })        
+        })
         this.setState({ comment: '', editMode: false })
     }
 
     render(){
         let commentArea = null
-        if (this.state.editmode){
+        if (this.state.editMode) {
             commentArea = (
                 <View style={styles.container}>
-                    <TextInput placeholder='Pode comentar...' style={styles.input} 
-                        autoFocus={true} value={this.state.comment}
+                    <TextInput placeholder='Pode comentar...'
+                        style={styles.input} autoFocus={true}
+                        value={this.state.comment}
                         onChangeText={comment => this.setState({ comment })}
-                        onSubmitEditing={this.handleAddComment}/>
-                    <TO onPress={()=> this.setState({ editmode: false })}>
-                        <Icon name='times' size={15} color='#555'/>
-                    </TO>
+                        onSubmitEditing={this.handleAddComment} />
+                    <TWF onPress={() => this.setState({ editMode: false })}>
+                        <Icon name='times' size={15} color='#555' />
+                    </TWF>
                 </View>
             )
-        } else{
+        } else {
             commentArea = (
-                <TO onPress={()=> this.setState({editmode: true})}>
-                    <Icon style={{marginLeft: 10}} name='comment-o' size={25} color='#555'/>
-                    <Text style={styles.caption}>
-                        Adicionar comentário
-                    </Text>
-                </TO>
+                <TWF onPress={() => this.setState({ editMode: true })}>
+                    <View style={styles.container}>
+                        <Icon name='comment-o' size={25} color='#555' />
+                        <Text style={styles.caption}>
+                            Adicione um comentário...
+                        </Text>
+                    </View>
+                </TWF>
             )
         }
         return(
@@ -85,9 +85,9 @@ const mapStateToProps = ({ user }) =>{
         name: user.name
     }
 }
-const mapDispatchToProps = dispatch =>{
+const mapDispatchToProps = dispatch =>{        
     return{
-        onAddComment: payload => dispatch(addComment(payload))
+        onAddComment: payload => dispatch(addComment(payload))        
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(AddComments)
