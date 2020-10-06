@@ -4,6 +4,6 @@
 </ol>
 # Status do desenvolvimento</br>
 ## Componentes</br>
-- [X] Adicionar comentário 
+- [x] Adicionar comentário 
 
 
