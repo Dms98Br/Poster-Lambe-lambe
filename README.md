@@ -5,6 +5,6 @@
 
 # Status do desenvolvimento</br>
 ## Componentes</br>
-- [x] Adicionar comentário 
+- [x] Adicionar comentário
 
 
