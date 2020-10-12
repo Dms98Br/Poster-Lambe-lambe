@@ -1,9 +1,9 @@
 import {
     SET_POSTS,
     CREATING_POST,
-    POST_CREATED
+    POST_CREATED,
 } from './actionTypes-actions'
-
+import { setMessage } from './message-actions'
 import axios from 'axios'
 
 export const addPost = post => {
@@ -16,11 +16,21 @@ export const addPost = post => {
             data:{
                 image: post.image.base64
             }
-        }).catch( err => console.log('err1', err))//Erro 500 está aqui
+        }).catch( err => {
+            dispatch(setMessage({
+                title: 'Erro',
+                text: err
+            }))
+        })
         .then( resp => {
             post.image = resp.data.imageUrl            
             axios.post('/posts.json', { ...post })
-            .catch(err => console.log('err2', err))
+            .catch(err =>{
+                dispatch(setMessage({
+                    title: 'Erro',
+                    text: err
+                }))
+            })
             .then(res => {
                 dispatch(fetchPosts())
                 dispatch(postCreated())
@@ -44,10 +54,6 @@ export const addComment = payload =>{
             })
         })
     }
-    // return{
-    //     type: ADD_COMMENT,
-    //     payload: payload
-    // }
 }
 
 export const setPosts = posts =>{    
