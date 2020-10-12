@@ -11,6 +11,7 @@ import AddPhoto from './screens/addPhoto'
 import Profile from './screens/profile'
 import Login from './screens/login'
 import Register from './screens/register'
+import Splash from './screens/splash'
 
 const authRouter = createStackNavigator({
     Login :{ screen: Login, navigationOptions: { title: 'Login' } },
@@ -63,5 +64,11 @@ const MenuConfig = {
 }
 const MenuNavigator = createBottomTabNavigator(MenuRoutes, MenuConfig)
 
-export default MenuNavigator
+const SplashRouter = createSwitchNavigator({
+    Splash: Splash,
+    App: MenuNavigator,},
+    {
+        initialRouteName: 'Splash'
+    })
 
+export default SplashRouter
