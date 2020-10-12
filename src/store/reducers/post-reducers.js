@@ -1,4 +1,3 @@
-import { Alert } from 'react-native';
 import {
     SET_POSTS,
     CREATING_POST,
