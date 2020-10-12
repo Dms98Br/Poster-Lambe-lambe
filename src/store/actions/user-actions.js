@@ -33,16 +33,14 @@ export const createUser = user =>{
         })
         .catch(err=> console.log('err1 - createUser', err))
         .then( res => {
-            if (res.data.localId) {
+            if (res.data.localId) {          
+                user.token = res.data.idToken      
                 axios.put(`/users/${res.data.localId}.json`,{
                     name: user.name
                 })
                 .catch( err => console.log('err2 - createUser', err))
-                .then( res => {
-                    delete user.password
-                    user.id = res.data.localId
-                    dispatch(userLogged(user))
-                    dispatch(userLoaded())
+                .then( () => {
+                    dispatch(login(user))
                 })
             }
         })
@@ -72,6 +70,7 @@ export const login = user => {
         .catch( err => console.log('err1',err) )
         .then( res => {
             if(res.data.localId){
+                user.token = res.data.idToken
                 axios.get(`/users/${res.data.localId}.json`)
                 .catch( err => console.log('err2',err))
                 .then( res=> {
