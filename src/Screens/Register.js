@@ -6,12 +6,24 @@ import {
     TouchableOpacity as TO,
     TextInput
 } from 'react-native'
+import { connect } from 'react-redux'
+import { createUser } from '../store/actions/user-actions'
 
 class Register extends Component{
     state={
         name: '',
         email: '',
         password: ''
+    }
+    componentDidUpdate = prevProps => {
+        if(prevProps.isLoading && !this.props.isLoading){
+            this.setState({
+                name: '',
+                email: '',
+                password: ''
+            })
+            this.props.navigation.navigate('Profile')
+        }
     }
     render(){
         return(
@@ -26,7 +38,9 @@ class Register extends Component{
             <TextInput placeholder='Senha' style={styles.input}
                 value={this.state.password} secureTextEntry={true}
                 onChangeText={ password => this.setState({ password })}/>            
-            <TO onPress={() => {}} style={styles.buttom}>
+            <TO 
+                onPress={ () => { this.props.onCreateUser(this.state) } }
+                style={styles.buttom}>
                 <Text style={styles.buttomText}>Salvar</Text>
             </TO>
         </View>
@@ -59,4 +73,16 @@ const styles = StyleSheet.create({
         paddingLeft: 15
     }
 })
-export default Register
+
+const mapDispatchToProps = dispatch => {
+    return{
+        onCreateUser: user => dispatch( createUser(user) )
+    }
+}
+const mapStateToProps = ({ user }) =>{
+    return{
+        isLoading: user.isLoading
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Register)
